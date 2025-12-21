@@ -4,16 +4,19 @@ source /tmp/install-config.env
 DEBIAN_FRONTEND=noninteractive
 
 cat > /etc/apt/sources.list << HEREDOC
-deb https://deb.debian.org/debian/ trixie main contrib non-free deb-src https://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware 
-deb https://security.debian.org/debian-security trixie-security main contrib non-free deb-src https://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware 
-deb https://deb.debian.org/debian/ trixie-updates main contrib non-free deb-src https://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware 
+deb https://deb.debian.org/debian/ trixie main contrib non-free-firmware 
+deb-src https://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware 
+deb https://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware 
+deb-src https://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware 
+deb https://deb.debian.org/debian/ trixie-updates main contrib non-free-firmware 
+deb-src https://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware 
 HEREDOC
 
 apt update
+apt install apt-utils dialog
+apt install locales console-setup
 
-update-locale "LANG=en_GB.UTF-8"
-locale-gen --purge "en_GB.UTF-8"
-dpkg-reconfigure --frontend noninteractive locales
+dpkg-reconfigure --frontend dialog locales
 
 ln -sf /usr/share/zoneinfo/$timezone /etc/localtime
 dpkg-reconfigure --frontend noninteractive tzdata
@@ -21,7 +24,7 @@ dpkg-reconfigure --frontend noninteractive tzdata
 apt install network-manager
 apt install sudo
 
-echo $hostname >> /etc/hostname
+echo $hostname > /etc/hostname
 
 useradd -m -G users,sudo,audio,video -s /bin/bash $username
 echo "$username":"$password" | chpasswd
