@@ -34,13 +34,14 @@ echo "$username":"$password" | chpasswd
 apt install linux-image-amd64 firmware-linux
 
 # XFCE
-apt install libxfce4ui-utils thunar xfce4-appfinder xfce4-panel xfce4-session xfce4-settings xfdesktop4 xfwm4 xfce4-terminal xfce4-screenshooter mousepad ristretto xfce4-screensaver
+apt install kde-standard
+apt remove sddm
 
 # Firefox ESR, MATE's Document Viewer
 apt install firefox-esr atril 
 
 # Misc
-apt install curl bzip2 git make libsdl3-dev clang
+apt install curl bzip2 git make libsdl3-dev clang fastfetch hyfetch 
 
 # LightDM
 apt install lightdm 
@@ -66,6 +67,128 @@ cat > /etc/lightdm/slick-greeter.conf << IMRUNNINGOUTOFSHIT
 
 IMRUNNINGOUTOFSHIT
 
+cat > /usr/share/wayland-sessions/plasma.desktop << PLASMA
+[Desktop Entry]
+Exec=/usr/bin/dbus-run-session /usr/bin/startplasma-wayland
+TryExec=/usr/bin/startplasma-wayland
+DesktopNames=KDE
+Name=Plasma (Wayland)
+Name[ar]=بلازما (ويلاند)
+Name[ast]=Plasma (Wayland)
+Name[az]=Plasma (Wayland)
+Name[be]=Plasma (Wayland)
+Name[bg]=Plasma (Wayland)
+Name[ca]=Plasma (Wayland)
+Name[ca@valencia]=Plasma (Wayland)
+Name[cs]=Plasma (Wayland)
+Name[da]=Plasma (Wayland)
+Name[de]=Plasma (Wayland)
+Name[el]=Plasma (Wayland)
+Name[en_GB]=Plasma (Wayland)
+Name[eo]=Plasma (Wayland)
+Name[es]=Plasma (Wayland)
+Name[et]=Plasma (Wayland)
+Name[eu]=Plasma (Wayland)
+Name[fi]=Plasma (Wayland)
+Name[fr]=Plasma (Wayland)
+Name[gl]=Plasma (Wayland)
+Name[he]=פלזמה (Wayland)
+Name[hi]=प्लाज़्मा (वेलैंड)
+Name[hsb]=Plasma (Wayland)
+Name[hu]=Plasma (Wayland)
+Name[ia]=Plasma (Wayland)
+Name[id]=Plasma (Wayland)
+Name[is]=Plasma (Wayland)
+Name[it]=Plasma (Wayland)
+Name[ja]=Plasma (Wayland)
+Name[ka]=Plasma (Wayland)
+Name[ko]=Plasma(Wayland)
+Name[lt]=Plasma (Wayland)
+Name[lv]=Plasma (Wayland)
+Name[ml]=പ്ലാസ്മ (വേലാൻഡ്)
+Name[nb]=Plasma (Wayland)
+Name[nl]=Plasma (Wayland)
+Name[nn]=Plasma (Wayland)
+Name[pa]=ਪਲਾਜ਼ਮਾ (ਵੇਅਲੈਂਡ)
+Name[pl]=Plazma (Wayland)
+Name[pt]=Plasma (Wayland)
+Name[pt_BR]=Plasma (Wayland)
+Name[ro]=Plasma (Wayland)
+Name[ru]=Plasma (Wayland)
+Name[sa]=प्लाज्मा (वेलैण्ड्)
+Name[sk]=Plasma (Wayland)
+Name[sl]=Plasma (Wayland)
+Name[sv]=Plasma (Wayland)
+Name[ta]=பிளாஸ்மா (Wayland)
+Name[tg]=Плазма (Вэйленд)
+Name[th]=Plasma (Wayland)
+Name[tr]=Plasma (Wayland)
+Name[uk]=Плазма (Wayland)
+Name[vi]=Plasma (Wayland)
+Name[x-test]=xxPlasma (Wayland)xx
+Name[zh_CN]=Plasma (Wayland)
+Name[zh_TW]=Plasma (Wayland)
+Comment=Plasma by KDE
+Comment[ar]=بلازما كِيدِي
+Comment[az]=KDE Plasma
+Comment[be]=Plasma KDE
+Comment[bg]=Plasma от KDE
+Comment[bs]=Plazma od strane KDe
+Comment[ca]=Plasma, creat per la comunitat KDE
+Comment[ca@valencia]=Plasma, creat per la comunitat KDE
+Comment[cs]=Plasma z KDE
+Comment[da]=Plasma fra KDE
+Comment[de]=Plasma von KDE
+Comment[el]=Plasma από το KDE
+Comment[en_GB]=Plasma by KDE
+Comment[eo]=Plasma de KDE
+Comment[es]=Plasma, por KDE
+Comment[et]=KDE Plasma
+Comment[eu]=KDEren Plasma
+Comment[fi]=Plasma KDE:ltä
+Comment[fr]=Plasma, par KDE
+Comment[gl]=Plasma, de KDE.
+Comment[he]=פלזמה מבית KDE
+Comment[hi]=केडीइ द्वारा प्लाज़्माComment[hsb]=Plasma wot KDE
+Comment[hu]=Plasma a KDE-től
+Comment[ia]=Plasma per KDE
+Comment[id]=Plasma oleh KDE
+Comment[is]=Plasma frá KDE
+Comment[it]=Plasma di KDE
+Comment[ja]=Plasma by KDE
+Comment[ka]=Plasma, KDE-სგან
+Comment[ko]=KDE Plasma
+Comment[lt]=Plasma pagal KDE
+Comment[lv]=„Plasma“ no KDE
+Comment[ml]=കെഡിഇയുടെ പ്ലാസ്മ
+Comment[nb]=Plasma fra KDE
+Comment[nds]=Plasma vun KDE
+Comment[nl]=Plasma door KDE
+Comment[nn]=Plasma frå KDE
+Comment[pa]=KDE ਵਲੋਂ ਪਲਾਜ਼ਮਾComment[pl]=Plazma dzięki KDE
+Comment[pt]=Plasma do KDE
+Comment[pt_BR]=Plasma do KDE
+Comment[ro]=Plasma, de către KDE
+Comment[ru]=KDE Plasma
+Comment[sa]=KDE इत्यस्मात् प्लाज्माComment[sk]=Plasma od KDE
+Comment[sl]=KDE Plasma
+Comment[sr]=Плазма од КДЕ‑а
+Comment[sr@ijekavian]=Плазма од КДЕ‑а
+Comment[sr@ijekavianlatin]=Plasma od KDE‑a
+Comment[sr@latin]=Plasma od KDE‑a
+Comment[sv]=Plasma av KDE
+Comment[ta]=கே.டீ.யீ. வழங்கும் பிளாஸ்மா
+Comment[tg]=Plasma аз ҷониби KDE
+Comment[th]=Plasma โดย KDE
+Comment[tr]=KDE Plasma
+Comment[uk]=Плазма KDE
+Comment[vi]=Plasma, do KDE
+Comment[x-test]=xxPlasma by KDExx
+Comment[zh_CN]=KDE Plasma
+Comment[zh_TW]=Plasma by KDE
+X-KDE-PluginInfo-Version=6.3.6
+PLASMA
+
 if [ "$firmware" == "uefi" ]; then
   apt install grub-efi
   grub-install --efi-directory=/efi
@@ -75,3 +198,4 @@ else
   grub-install /dev/$disk
   grub-mkconfig -o /boot/grub/grub.cfg
 fi
+
