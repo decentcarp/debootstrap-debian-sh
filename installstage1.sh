@@ -1,6 +1,8 @@
 #!/bin/bash
 source /tmp/install-config.env
 
+apt install arch-install-scripts debootstrap
+
 mkfs.ext4 /dev/$rootpart
 mount /dev/$rootpart /mnt
 
@@ -16,6 +18,7 @@ if [ -d /sys/firmware/efi/efivars/ ]; then
     mount /dev/$bootefipart /mnt/efi
 else
     echo firmware=bios >> /tmp/aerios-config.env
+    mkfs.ext4 /dev/$bootefipart
     mount /dev/$bootefipart /mnt/boot
 fi
 
