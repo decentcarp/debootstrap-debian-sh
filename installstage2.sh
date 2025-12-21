@@ -12,17 +12,17 @@ deb https://deb.debian.org/debian/ trixie-updates main contrib non-free-firmware
 deb-src https://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware 
 HEREDOC
 
-apt update
-apt install apt-utils dialog
-apt install locales console-setup
+apt update -y
+apt install -y apt-utils dialog
+apt install -y locales console-setup
 
 dpkg-reconfigure --frontend dialog locales
 
 ln -sf /usr/share/zoneinfo/$timezone /etc/localtime
 dpkg-reconfigure --frontend noninteractive tzdata
 
-apt install network-manager
-apt install sudo
+apt install -y network-manager
+apt install -y sudo
 
 echo $hostname > /etc/hostname
 echo 127.0.0.1 $hostname >> /etc/hosts
@@ -31,21 +31,21 @@ useradd -m -G users,sudo,audio,video -s /bin/bash $username
 echo "$username":"$password" | chpasswd
 
 # Linux
-apt install linux-image-amd64 firmware-linux
+apt install -y linux-image-amd64 firmware-linux
 
 # XFCE
-apt install kde-standard
-apt remove sddm
+apt install -y kde-standard
+apt remove -y sddm
 
 # Firefox ESR, MATE's Document Viewer
-apt install firefox-esr atril 
+apt install -y firefox-esr atril 
 
 # Misc
-apt install curl bzip2 git make libsdl3-dev clang fastfetch hyfetch 
+apt install -y curl bzip2 git make libsdl3-dev clang fastfetch hyfetch 
 
 # LightDM
-apt install lightdm 
-apt install slick-greeter
+apt install -y lightdm 
+apt install -y slick-greeter
 dpkg-reconfigure lightdm
 systemctl enable lightdm
 cat > /etc/lightdm/lightdm.conf << CONFIGHERE
@@ -190,11 +190,11 @@ X-KDE-PluginInfo-Version=6.3.6
 PLASMA
 
 if [ "$firmware" == "uefi" ]; then
-  apt install grub-efi
+  apt install -y grub-efi
   grub-install --efi-directory=/efi
   grub-mkconfig -o /boot/grub/grub.cfg
 else
-  apt install grub2
+  apt install -y grub2
   grub-install /dev/$disk
   grub-mkconfig -o /boot/grub/grub.cfg
 fi
