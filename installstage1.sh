@@ -7,10 +7,6 @@ mkfs.ext4 /dev/$rootpart
 mount /dev/$rootpart /mnt
 
 debootstrap --arch amd64 stable /mnt https://deb.debian.org/debian 
-mount --make-rslave --rbind /proc /mnt/proc 
-mount --make-rslave --rbind /sys /mnt/sys 
-mount --make-rslave --rbind /dev /mnt/dev 
-mount --make-rslave --rbind /run /mnt/run
 
 if [ -d /sys/firmware/efi/efivars/ ]; then
     mkdir /mnt/efi
@@ -23,6 +19,11 @@ else
 fi
 
 genfstab -U /mnt >> /mnt/etc/fstab
+
+mount --make-rslave --rbind /proc /mnt/proc 
+mount --make-rslave --rbind /sys /mnt/sys 
+mount --make-rslave --rbind /dev /mnt/dev 
+mount --make-rslave --rbind /run /mnt/run
 
 mkdir /mnt/tmp
 cp /tmp/installstage2.sh /mnt/tmp/
