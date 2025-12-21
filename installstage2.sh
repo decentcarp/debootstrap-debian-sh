@@ -25,6 +25,7 @@ apt install network-manager
 apt install sudo
 
 echo $hostname > /etc/hostname
+echo 127.0.0.1 $hostname >> /etc/hosts
 
 useradd -m -G users,sudo,audio,video -s /bin/bash $username
 echo "$username":"$password" | chpasswd
