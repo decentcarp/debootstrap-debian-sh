@@ -1,4 +1,7 @@
-# Usage
+# Decentcarp's debootstrap shell script
+*Feel free to integrate this into anything, just give me a small credit somewhere.*
+
+## Usage
 [!] Pre-partitioning is required.
 
     Copy all files to /tmp
@@ -6,7 +9,7 @@
     Mark 'installstage1.sh' and 'installstage2.sh' as executable if they aren't already.
     Simply run installstage1.sh and there you go.
 
-# install-config.env
+## install-config.env
 Values:
 
     username = Your desired username
