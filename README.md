@@ -1,5 +1,5 @@
 # Decentcarp's debootstrap shell script
-*Feel free to integrate this into anything, just give me a small credit somewhere.*
+
 
 ## Usage
 [!] Pre-partitioning is required.
